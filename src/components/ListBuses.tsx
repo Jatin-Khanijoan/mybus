@@ -134,7 +134,7 @@ export default function BusListingPage() {
                                     className="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                                 <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
-                                    Starting at ${bus.price}/day
+                                    Starting at Rs.{bus.price}/day
                                 </div>
                             </div>
 

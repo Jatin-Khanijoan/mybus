@@ -4,8 +4,39 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { Textarea } from "../components/ui/textarea";
 import { Button } from "../components/ui/button";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ContactPage = () => {
+    const [formData, setFormData] = useState({
+        name: "",
+        phone: "",
+        location: "",
+        message: ""
+    });
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        try {
+            const res = await fetch("https://api.sheetbest.com/sheets/f2270757-2734-4282-aae0-03f6aea2c0a6", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)  
+            })
+            console.log(res);
+            if(res.ok) {
+                alert("Thank you for your response. We'll get back to you soon!");
+                navigate("/");
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
     return (
         <section className="relative overflow-hidden w-full pt-20 pb-20 lg:pl-10">
             <div className="absolute inset-0 bg-[linear-gradient(-45deg,#ffffff,#ffebeb,#ffd6d6,#ff9999)] bg-[length:400%_400%] animate-[gradientBG_15s_ease_infinite]" />
@@ -38,52 +69,53 @@ const ContactPage = () => {
                                     Fill out the form below and we'll get back to you as soon as possible.
                                 </CardDescription>
                             </CardHeader>
-                            <CardContent className="space-y-4">
-                                <div className="space-y-2">
-                                    <Label htmlFor="name">Name</Label>
-                                    <Input
-                                        id="name"
-                                        placeholder="Enter your name"
-                                        className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="email">Email</Label>
-                                    <Input
-                                        id="email"
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="phone">Phone</Label>
-                                    <Input
-                                        id="phone"
-                                        type="tel"
-                                        placeholder="Enter your phone number"
-                                        className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="location">Location</Label>
-                                    <Input
-                                        id="location"
-                                        placeholder="Enter your location"
-                                        className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="message">Message</Label>
-                                    <Textarea
-                                        id="message"
-                                        placeholder="Type your message here"
-                                        className="min-h-[100px] border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
-                                    />
-                                </div>
-                                <Button className="w-full bg-[#ff3333] hover:bg-[#ff4444] transition-colors">
-                                    Send Message
-                                </Button>
+                            <CardContent>
+                                <form onSubmit={handleSubmit} className="space-y-4">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="name">Name</Label>
+                                        <Input
+                                            id="name"
+                                            placeholder="Enter your name"
+                                            className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
+                                            value={formData.name}
+                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="phone">Phone</Label>
+                                        <Input
+                                            id="phone"
+                                            type="tel"
+                                            placeholder="Enter your phone number"
+                                            className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
+                                            value={formData.phone}
+                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="location">Location</Label>
+                                        <Input
+                                            id="location"
+                                            placeholder="Enter your location"
+                                            className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
+                                            value={formData.location}
+                                            onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="message">Message</Label>
+                                        <Textarea
+                                            id="message"
+                                            placeholder="Type your message here"
+                                            className="min-h-[100px] border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
+                                            value={formData.message}
+                                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                        />
+                                    </div>
+                                    <Button type="submit" className="w-full bg-[#ff3333] hover:bg-[#ff4444] transition-colors">
+                                        Submit
+                                    </Button>
+                                </form>
 
                                 {/* Contact Info Pills */}
                                 <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-4">
