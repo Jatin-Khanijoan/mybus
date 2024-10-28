@@ -1,9 +1,12 @@
 // import React from 'react';
 import { FiMapPin, FiClock, FiShield } from "react-icons/fi";
+import { Button } from "./ui/button";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
-    <section className="relative w-full min-h-[100dvh] overflow-hidden">
+    <section className="mt-10 relative w-full min-h-[100dvh] overflow-hidden">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-[linear-gradient(-45deg,#ffffff,#ffebeb,#ffd6d6,#ff9999)] bg-[length:400%_400%] animate-[gradientBG_15s_ease_infinite]" />
 
@@ -43,23 +46,42 @@ const HeroSection = () => {
               ))}
             </div>
 
-            {/* CTA Button - Uncomment if needed */}
-            {/* <div className="pt-4 sm:pt-6">
-              <button className="w-full sm:w-auto px-6 py-3 text-lg font-semibold 
-                               bg-white/90 text-gray-800 border border-[#ff3333] 
-                               rounded-full transition-all duration-300 
-                               hover:bg-red-50 hover:border-[#ff6666] 
-                               hover:shadow-[0_0_15px_rgba(255,51,51,0.4)] 
-                               focus:outline-none focus:ring-2 
-                               focus:ring-[rgba(255,51,51,0.5)] relative 
-                               overflow-hidden group">
-                <span className="relative z-10">Book Your Bus Now</span>
-                <span className="absolute inset-0 bg-gradient-to-r 
-                               from-[#ff3333] to-[#ff6666] opacity-0 
-                               group-hover:opacity-100 transition-opacity 
-                               duration-300"></span>
-              </button>
-            </div> */}
+            {/* CTA Button */}
+            <div className="pt-1 sm:pt-6">
+              <Button
+                size="lg"
+                onClick={() => {navigate('/buses')}}
+                className="w-3/4 sm:w-full px-6 md:px-10 py-6 md:py-7 text-xl font-bold
+                          bg-gradient-to-r from-[#ff3333] to-[#ff4d4d] text-white
+                          rounded-full transition-all duration-500 
+                          transform hover:scale-105
+                          hover:shadow-[0_0_30px_rgba(255,51,51,0.6)]
+                          focus:outline-none focus:ring-4
+                          focus:ring-[#ff3333]/30 relative
+                          overflow-hidden group"
+              >
+                <div className="flex items-center justify-center space-x-2">
+                  <span className="relative z-10">Book Your Bus Now</span>
+                  <svg 
+                    className="w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
+                  </svg>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r 
+                            from-[#ff4d4d] to-[#ff6666] opacity-0
+                            group-hover:opacity-100 transition-opacity 
+                            duration-500"></div>
+              </Button>
+            </div>
           </div>
         </div>
 

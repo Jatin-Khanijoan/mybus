@@ -2,19 +2,34 @@ import { FiMapPin, FiPhone, FiMail } from "react-icons/fi";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
-import { Textarea } from "../components/ui/textarea";
 import { Button } from "../components/ui/button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "./ui/datepicker";
+import { format, set } from "date-fns";
+
+interface FormData {
+    name: string;
+    phone: string;
+    departureDate: Date | null;
+    arrivalDate: Date | null;
+    tripOrigin: string;
+    tripDestination: string;
+    numberOfPassengers: string;
+}
 
 const ContactPage = () => {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<FormData>({
         name: "",
         phone: "",
-        location: "",
-        message: ""
+        departureDate: null,
+        arrivalDate: null,
+        tripOrigin: "",
+        tripDestination: "",
+        numberOfPassengers: ""
     });
     const navigate = useNavigate();
+    // const [isSubmitted, setIsSubmitted] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -24,17 +39,20 @@ const ContactPage = () => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(formData)  
-            })
+                body: JSON.stringify({
+                    ...formData,
+                    departureDate: formData.departureDate ? format(new Date(formData.departureDate), 'dd-MM-yyyy') : null,
+                    arrivalDate: formData.arrivalDate ? format(new Date(formData.arrivalDate), 'dd-MM-yyyy') : null
+                })
+            });
             console.log(res);
-            if(res.ok) {
-                alert("Thank you for your response. We'll get back to you soon!");
+            if (res.ok) {
+                alert("Thank you for your response. We'll reach out to you as soon as possible.");
                 navigate("/");
             }
         } catch (error) {
             console.error(error);
         }
-
     }
 
     return (
@@ -62,6 +80,8 @@ const ContactPage = () => {
                 {/* Content Section (right) */}
                 <div className="relative px-4 md:px-6 lg:px-12 flex items-center z-10 py-8 lg:py-0 order-2 lg:order-none">
                     <div className="w-full max-w-xl mx-auto">
+                        {/* {!isSubmitted ? ( */}
+                        {/* <> */}
                         <Card className="border-none shadow-lg">
                             <CardHeader className="space-y-1">
                                 <CardTitle className="text-2xl md:text-3xl text-[#ff3333]">Get in Touch</CardTitle>
@@ -93,23 +113,51 @@ const ContactPage = () => {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="location">Location</Label>
-                                        <Input
-                                            id="location"
-                                            placeholder="Enter your location"
+                                        <Label htmlFor="departureDate">Date of departure</Label>
+                                        <DatePicker
                                             className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
-                                            value={formData.location}
-                                            onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                                            value={formData.departureDate ?? undefined}
+                                            onChange={(date) => setFormData({ ...formData, departureDate: date ?? null })}
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="message">Message</Label>
-                                        <Textarea
-                                            id="message"
-                                            placeholder="Type your message here"
-                                            className="min-h-[100px] border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
-                                            value={formData.message}
-                                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                        <Label htmlFor="arrivalDate">Date of arrival</Label>
+                                        <DatePicker
+                                            className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
+                                            value={formData.arrivalDate ?? undefined}
+                                            onChange={(date) => setFormData({ ...formData, arrivalDate: date ?? null })}
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="tripOrigin">Trip Origin</Label>
+                                        <Input
+                                            id="tripOrigin"
+                                            placeholder="Enter your trip origin"
+                                            className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
+                                            value={formData.tripOrigin}
+                                            onChange={(e) => setFormData({ ...formData, tripOrigin: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="tripDestination">Trip Destination</Label>
+                                        <Input
+                                            id="tripDestination"
+                                            placeholder="Enter your trip destination"
+                                            className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
+                                            value={formData.tripDestination}
+                                            onChange={(e) => setFormData({ ...formData, tripDestination: e.target.value })}
+                                        />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="numberOfPassengers">Number of Passengers</Label>
+                                        <Input
+                                            id="numberOfPassengers"
+                                            placeholder="Enter number of passengers"
+                                            type="number"
+                                            min="1"
+                                            className="border-gray-200 focus:border-[#ff3333] focus:ring-[#ff3333]"
+                                            value={formData.numberOfPassengers}
+                                            onChange={(e) => setFormData({ ...formData, numberOfPassengers: e.target.value })}
                                         />
                                     </div>
                                     <Button type="submit" className="w-full bg-[#ff3333] hover:bg-[#ff4444] transition-colors">
@@ -135,6 +183,17 @@ const ContactPage = () => {
                                 </div>
                             </CardContent>
                         </Card>
+                        {/* </>) : (
+                            <Card className="border-none shadow-lg">
+                                <CardHeader className="space-y-1">
+                                    <CardTitle className="text-2xl md:text-3xl text-[#ff3333]">Thank you for your response</CardTitle>
+                                    <CardDescription>
+                                        We'll reach out to you as soon as possible.
+                                    </CardDescription>
+                                </CardHeader>
+                            </Card>
+                        )
+                        } */}
                     </div>
                 </div>
             </div>

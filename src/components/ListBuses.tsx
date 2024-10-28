@@ -161,7 +161,6 @@ export default function BusListingPage() {
 
                                 <Button
                                     onClick={() => {
-                                        alert("Contact us to book this bus.");
                                         navigate("/contact");
                                     }}
                                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-colors duration-300"

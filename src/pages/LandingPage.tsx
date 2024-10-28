@@ -9,9 +9,9 @@ const LandingPage = () => {
         <>
             <HeroSection />
             <WhyChooseUs />
-            <FAQs />
-            <TrustedBy />
             <Explore /> 
+            <TrustedBy />
+            <FAQs />
         </>
     );
 }

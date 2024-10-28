@@ -44,8 +44,9 @@ const Navbar = () => {
                         to="/" 
                         className="flex-shrink-0 group"
                     >
-                        <div className="text-2xl md:text-3xl font-bold text-[#ff3333] transition-all duration-300 hover:text-[#ff6666] hover:scale-105">
-                            MyBusRental
+                        <div className="text-3xl md:text-4xl font-bold transition-all duration-300 hover:scale-105">
+                            <span></span>
+                            <span className="text-[#ff3333]">My</span><span className="text-gray-700">Bus</span>
                         </div>
                     </Link>
                     
