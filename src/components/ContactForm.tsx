@@ -6,7 +6,7 @@ import { Button } from "../components/ui/button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "./ui/datepicker";
-import { format, set } from "date-fns";
+import { format } from "date-fns";
 
 interface FormData {
     name: string;
