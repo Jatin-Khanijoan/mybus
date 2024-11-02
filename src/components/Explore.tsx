@@ -1,4 +1,4 @@
-import { Wifi, Wind, Coffee, Power, ThermometerSun, Tv, Map } from 'lucide-react';
+import { Wifi, Coffee, Power, ThermometerSun, Tv, Map } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -104,6 +104,7 @@ export default function FeaturedBus() {
         </p>
         <Card className="p-4 bg-transparent border-none shadow-none">
           <Carousel 
+            ref={emblaRef}
             opts={{
               align: "start",
               loop: true,
@@ -111,7 +112,7 @@ export default function FeaturedBus() {
             className="w-full"
           >
             <CarouselContent>
-              {buses.map((bus, index) => (
+              {buses.map((bus) => (
                 <CarouselItem key={bus.id}>
                   <div className="flex flex-col md:flex-row bg-white rounded-xl overflow-hidden shadow-lg">
                     <div className="w-full md:w-2/5 relative h-72 md:h-[500px]">

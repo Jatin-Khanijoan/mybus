@@ -60,22 +60,14 @@ const ContactPage = () => {
             <div className="absolute inset-0 bg-[linear-gradient(-45deg,#ffffff,#ffebeb,#ffd6d6,#ff9999)] bg-[length:400%_400%] animate-[gradientBG_15s_ease_infinite]" />
             <div className="relative w-full min-h-screen grid grid-cols-1 lg:grid-cols-2">
                 {/* Image Section (left) */}
-                <div className="relative h-64 lg:h-full w-full order-1 lg:order-none">
+                <div className="relative h-full w-full order-1 lg:order-none">
                     <div className="absolute inset-0 bg-black/10 z-10" />
-                    <video
+                    <img
                         className="absolute inset-0 w-full h-full object-cover"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                    >
-                        <source
-                            src="https://res.cloudinary.com/dnvh2fya6/video/upload/v1729980686/MyBus/142755-780943401_small_ymnske.mp4"
-                            type="video/mp4"
-                        />
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+                        src="https://res.cloudinary.com/dnvh2fya6/image/upload/v1730567227/MyBus/a431804f-0855-4212-b67a-765c3de500bb_xhulhj.jpg"
+                        alt="Contact Form"
+                    />
+                </div>  
 
                 {/* Content Section (right) */}
                 <div className="relative px-4 md:px-6 lg:px-12 flex items-center z-10 py-8 lg:py-0 order-2 lg:order-none">
