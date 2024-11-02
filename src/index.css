@@ -20,13 +20,12 @@
 /* Animated gradient background */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   background: linear-gradient(-45deg, #ffffff, #ffebeb, #ffd6d6, #ff9999);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
+  width: 100%;
 }
 
 @keyframes gradientBG {
@@ -95,4 +94,12 @@ body {
   to {
     text-shadow: 0 0 20px rgba(255, 51, 51, 0.8);
   }
+}
+
+/* Add this new style for the root element */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
 }

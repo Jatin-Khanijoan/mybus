@@ -11,30 +11,39 @@ import { useNavigate } from "react-router-dom";
 const buses = [
     {
         id: 1,
-        name: "Luxury Coach VIP",
+        name: "Luxury Coach VIP (40-45 seater)",
         image: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730048026/MyBus/d18756fc-3125-4b1d-af18-0cc934acbaf0_zwkkzy.jpg",
         capacity: 45,
-        price: 1200,
+        price: 0,
         amenities: ["wifi", "power", "ac", "gps"],
         description: "Premium coach perfect for corporate events and long-distance travel"
     },
     {
         id: 2,
-        name: "Executive Minibus",
+        name: "Urbania buses (15-20 seater) ",
         image: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730048032/MyBus/fb5a6930-9943-4ece-9659-56440b0fa5b8_oftcwv.jpg",
-        capacity: 28,
-        price: 800,
+        capacity: 30,
+        price: 0,
         amenities: ["wifi", "power", "ac", "gps"],
         description: "Ideal for small groups and airport transfers"
     },
     {
         id: 3,
-        name: "Party Bus Supreme",
+        name: "Force Tempo Travellers (15-25 seater)",
         image: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730048038/MyBus/c4177407-ba49-4918-8ff2-586962dd9efe_ujqspe.jpg",
-        capacity: 20,
-        price: 1500,
+        capacity: 25,
+        price: 0,
         amenities: ["wifi", "power", "ac", "gps"],
         description: "Perfect for special events and celebrations"
+    },
+    {
+        id: 4,
+        name: "Bharat Benz (30-35 seater)",
+        image: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730554853/MyBus/66299bac-c382-443a-bf2f-50a1e9143ae9_fmsrni.jpg",
+        capacity: 35,
+        price: 0,
+        amenities: ["wifi", "power", "ac", "gps"],
+        description: "A reliable and comfortable option for medium-sized groups, perfect for school trips, corporate events, or family gatherings."
     },
 ];
 

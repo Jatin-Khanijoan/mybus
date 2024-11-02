@@ -34,8 +34,8 @@ const Navbar = () => {
         <header 
             className={`fixed w-full z-50 transition-all duration-500 ${
                 scrolled 
-                    ? "bg-white shadow-lg" 
-                    : "bg-[#ffeeee]"
+                    ? "bg-white/90 backdrop-blur-sm shadow-lg" 
+                    : "bg-transparent"
             }`}
         >
             <div className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -44,9 +44,9 @@ const Navbar = () => {
                         to="/" 
                         className="flex-shrink-0 group"
                     >
-                        <div className="text-3xl md:text-4xl font-bold transition-all duration-300 hover:scale-105">
-                            <span></span>
-                            <span className="text-[#ff3333]">My</span><span className="text-gray-700">Bus</span>
+                        <div className="flex items-center text-3xl md:text-4xl font-bold transition-all duration-300 hover:scale-105">
+                            <img src="https://res.cloudinary.com/dnvh2fya6/image/upload/v1729978006/MyBus/logo_new_2_bysltg.png" alt="MyBus Logo" className="w-10 h-10 mr-2" />
+                            <span className="text-[#ff3333]">My</span><span className={`${scrolled ? 'text-gray-700' : 'text-white'}`}>Bus</span>
                         </div>
                     </Link>
                     
@@ -59,7 +59,9 @@ const Navbar = () => {
                                         className={`relative text-lg font-medium transition-all duration-300 px-2 py-1 rounded-md
                                             ${isActive(link.href)
                                                 ? "text-[#ff3333] font-semibold"
-                                                : "text-gray-700 hover:text-[#ff6666]"
+                                                : scrolled 
+                                                    ? "text-gray-700 hover:text-[#ff6666]"
+                                                    : "text-white hover:text-[#ff6666]"
                                             }
                                             before:content-[''] before:absolute before:bottom-0 before:left-0 before:w-full before:h-0.5 
                                             before:bg-[#ff3333] before:transform before:scale-x-0 before:origin-right before:transition-transform
@@ -76,7 +78,9 @@ const Navbar = () => {
 
                     <div className="md:hidden">
                         <button 
-                            className="text-2xl text-[#ff3333] transition-colors hover:text-[#ff6666]" 
+                            className={`text-2xl transition-colors ${
+                                scrolled ? 'text-[#ff3333] hover:text-[#ff6666]' : 'text-white hover:text-[#ff6666]'
+                            }`}
                             onClick={toggleMenu}
                             aria-label="Toggle menu"
                         >
@@ -88,7 +92,7 @@ const Navbar = () => {
      
             {/* Mobile Menu */}
             <div 
-                className={`md:hidden fixed inset-x-0 top-16 bg-white shadow-lg 
+                className={`md:hidden fixed inset-x-0 top-16 bg-black/80 backdrop-blur-sm
                            transform transition-all duration-300 ease-in-out ${
                                isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
                            }`}
@@ -100,8 +104,8 @@ const Navbar = () => {
                             to={link.href} 
                             className={`block px-4 py-2 rounded-lg text-base font-medium transition-all duration-300
                                 ${isActive(link.href)
-                                    ? "bg-red-50 text-[#ff3333] font-semibold"
-                                    : "text-gray-700 hover:bg-red-50/50 hover:text-[#ff6666]"
+                                    ? "bg-red-500/20 text-[#ff3333] font-semibold"
+                                    : "text-white hover:bg-red-500/10 hover:text-[#ff6666]"
                                 }`}
                             onClick={toggleMenu}
                         >

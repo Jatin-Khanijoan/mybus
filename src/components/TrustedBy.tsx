@@ -5,7 +5,7 @@ const companies = [
     { alt: "TITAN Company", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730044584/MyBus/titan-company-logo-B33AE787A6-seeklogo.com_isnrxn.png" },
     { alt: "JSW", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730044599/MyBus/jsw-steel-logo-82ED4A72F6-seeklogo.com_okhmyn.png" },
     // { alt: "WRL", logo: "/placeholder.svg?height=100&width=100" },
-    { alt: "redBus", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730044621/MyBus/redbus-logo-5B2A75C4DA-seeklogo.com_kheclj.png" },
+    // { alt: "redBus", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730044621/MyBus/redbus-logo-5B2A75C4DA-seeklogo.com_kheclj.png" },
     { alt: "Yes Bank", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730044639/MyBus/yes-bank-logo-BE25FE94D0-seeklogo.com_nmyqwl.png" },
     { alt: "Amazon", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730044859/MyBus/amazon-logo-86547BFB54-seeklogo.com_psykvg.png" },
     { alt: "Google", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730044896/MyBus/google-2015-icon-logo-B4217923DD-seeklogo.com_ge5fpr.png" },
@@ -14,9 +14,9 @@ const companies = [
     { alt: "Rainbow International School", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730044703/MyBus/174-1747960_rainbow-preschools-international-logo-rainbow-international-school-logo_vrkig4.png" },
     // { alt: "OCS", logo: "/placeholder.svg?height=100&width=100" },
     // { alt: "Actics", logo: "/placeholder.svg?height=100&width=100" },
-    { alt: "Cityflo", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730047087/MyBus/download_bqpzgr.png" },
-    // { alt: "Navneet", logo: "/placeholder.svg?height=100&width=100" },
-    // { alt: "Horizon Group of Hospitals", logo: "/placeholder.svg?height=100&width=100" },
+    // { alt: "Cityflo", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730047087/MyBus/download_bqpzgr.png" },
+    { alt: "Navneet", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730554676/MyBus/download_qaqoy0.jpg" },
+    { alt: "Horizon Group of Hospitals", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730554534/MyBus/download_ooz9sk.png" },
     { alt: "Imagica", logo: "https://res.cloudinary.com/dnvh2fya6/image/upload/v1730047585/MyBus/download_eksyka.png" },
 ]
 
