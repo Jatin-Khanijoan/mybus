@@ -161,7 +161,7 @@ const ContactPage = () => {
                                 <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-4">
                                     {[
                                         { icon: FiMapPin, text: "123 Main St, Hiranandani, India" },
-                                        { icon: FiPhone, text: "+91 9137569829" },
+                                        { icon: FiPhone, text: "+91 9372710486" },
                                         { icon: FiMail, text: "mybusrental@gmail.com" },
                                     ].map((item, index) => (
                                         <div
